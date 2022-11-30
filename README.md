@@ -6,20 +6,32 @@ TODO
 
 ## Requirements
 ```
-pip install flask python-dotenv flask_restful
+Docker
+React
 ```
 
 ----
 
-## Backend
-To run the backend:
+## Commands
+help command
 ```
-flask run
+make help
 ```
 
-Check if you get a success message back from a GET call:
+## Backend
+Build the backend first:
 ```
-http://localhost:5000/flask/hello
+make build
+```
+
+To run the backend:
+```
+make run
+```
+
+To clean the docker container
+```
+make clean
 ```
 
 ---
