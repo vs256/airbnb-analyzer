@@ -51,7 +51,7 @@ const MarkersMap = () => {
                   >
                     <Popup>
                       <b>
-                        {listing.name} | Location: {listing.neighbourhood}
+                        {listing.name} </b> <hr/> <b> Location: {listing.neighbourhood}
                       </b>
                     </Popup>
                   </Marker>
