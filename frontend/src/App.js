@@ -3,7 +3,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import PricePredictor from './PricePredictor';
-
+import ListingsMaps from './maps/listingsMaps';
 
 function App() {
 
@@ -22,12 +22,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Price Predictor</p>
+
 
         <PricePredictor/>
-      </header>
+
+        <ListingsMaps/>
     </div>
   );
 }

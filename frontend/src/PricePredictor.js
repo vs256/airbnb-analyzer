@@ -2,15 +2,17 @@ import { useState } from "react";
 import APIService from "./Components/APIService";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Slider, Radio, RadioGroup, } from 'rsuite'
+import 'rsuite/dist/rsuite.min.css';
 
 const PricePredictor = (props) => {
   const [title, setTitle] = useState("");
   const [neighbourhood, setNeighbourhood] = useState("");
-  const [guests, setGuests] = useState("");
-  const [bathrooms, setBathrooms] = useState("");
-  const [accommodates, setAccommodates] = useState("");
-  const [bedrooms, setBedrooms] = useState("");
-  const [beds, setBeds] = useState("");
+  const [guests, setGuests] = useState(4);
+  const [bathrooms, setBathrooms] = useState(1);
+  const [accommodates, setAccommodates] = useState(4);
+  const [bedrooms, setBedrooms] = useState(1);
+  const [beds, setBeds] = useState(1);
   const [cancellation_policy, setCancellationPolicy] = useState("");
   const [property_type, setPropertyType] = useState("");
   const [room_type, setRoomType] = useState("");
@@ -19,6 +21,8 @@ const PricePredictor = (props) => {
 
   const [cityPrice, setCityPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  
+  
 
   const InsertPredictValues = () => {
     APIService.InsertPredictValues({
@@ -65,7 +69,15 @@ const PricePredictor = (props) => {
 
 
   return (
-    <div>
+    <div style={{display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',height: '100vh',}}>
+    <div style={{display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',}}>
+
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="price-predictor" className="form-label" />
         <Form.Select
@@ -86,77 +98,106 @@ const PricePredictor = (props) => {
           <option value="Cupertino">Cupertino</option>
           <option value="Gilroy">Gilroy</option>
         </Form.Select>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Guests"
-          value={guests}
-          onChange={(e) => setGuests(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Bathrooms"
-          value={bathrooms}
-          onChange={(e) => setBathrooms(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Accomodates"
-          value={accommodates}
-          onChange={(e) => setAccommodates(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Bedrooms"
-          value={bedrooms}
-          onChange={(e) => setBedrooms(e.target.value)}
-        />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Beds"
-          value={beds}
-          onChange={(e) => setBeds(e.target.value)}
-        />
-        <Form.Select
-          value={cancellation_policy}
-          onChange={(e) => setCancellationPolicy(e.target.value)}
-          aria-label="Default select example"
-        >
-          <option>Cancellation Policy</option>
-          <option value="flexible">flexible</option>
-          <option value="moderate">moderate</option>
-          <option value="strict">strict</option>
-        </Form.Select>
 
-        <Form.Select
-          value={property_type}
-          onChange={(e) => setPropertyType(e.target.value)}
-          aria-label="Default select example"
-        >
-          <option>Property Type</option>
-          <option value="Apartment">Apartment</option>
-          <option value="House">House</option>
-          <option value="Boat">Boat</option>
-          <option value="Loft">Loft</option>
-        </Form.Select>
+        
 
-        <Form.Select
-          value={room_type}
-          onChange={(e) => setRoomType(e.target.value)}
-          aria-label="Default select example"
-        >
-          <option>Room Type</option>
-          <option value="Private room">Private room</option>
-          <option value="Entire home/apt">Entire home/apt</option>
-        </Form.Select>
+      <label> Guests: {guests}</label>
+        <Slider
+      progress
+      defaultValue={1}
+      onChange={value => {
+        setGuests(value)
+      }}
+      min={1}
+      max={64}
+    />
+    <hr/>
+    <label> Bathrooms: {bathrooms} </label>
+        <Slider
+      progress
+      defaultValue={1}
+      onChange={value => {
+        setBathrooms(value)
+      }}
+      min={1}
+      max={12}
+    />
+    <hr/>
+    <label> Accommodates: {accommodates}</label>
+        <Slider
+      progress
+      defaultValue={1}
+      onChange={value => {
+        setAccommodates(value)
+      }}
+      min={1}
+      max={64}
+    />
+    <hr/>
+    <label> Bedrooms: {bedrooms}</label>
+        <Slider
+      progress
+      defaultValue={1}
+      onChange={value => {
+        setBedrooms(value)
+      }}
+      min={1}
+      max={12}
+    />
+    <hr/>
+    <label> Beds: {beds} </label>
+        <Slider
+      progress
+      defaultValue={1}
+      onChange={value => {
+        setBeds(value)
+      }}
+      min={1}
+      max={24}
+    />
+    <hr/>
+    <label> Cancellation policy </label>
+    <RadioGroup name="radioList" inline>
+      <Radio value="flexible" onChange={value => {
+        setCancellationPolicy(value)
+      }}>flexible</Radio>
+      <Radio value="moderate"onChange={value => {
+        setCancellationPolicy(value)
+      }}>moderate</Radio>
+      <Radio value="strict"onChange={value => {
+        setCancellationPolicy(value)
+      }}>strict</Radio>
+    </RadioGroup>
+        
+    <hr/>
+    <label> Property type </label>
+    <RadioGroup name="radioList" inline>
+      <Radio value="Apartment" onChange={value => {
+        setPropertyType(value)
+      }}>Apartment</Radio>
+      <Radio value="House"onChange={value => { setPropertyType(value)}}>
+        House</Radio>
+        <Radio value="Boat" onChange={value => { setPropertyType(value)
+      }}>Boat</Radio>
+      <Radio value="Loft" onChange={value => { setPropertyType(value)
+      }}>Loft</Radio>
+    </RadioGroup>
+       
+    <hr/>
+    <label> Room type </label>
+    <RadioGroup name="radioList" inline>
+      <Radio value="Private room" onChange={value => {
+        setRoomType(value)
+      }}>Private room</Radio>
+      <Radio value="Entire home/apt"onChange={value => { setRoomType(value)}}>
+      Entire home/apt</Radio>
+    </RadioGroup>
 
-        <button className="btn btn-primary mt-2">Publish </button>
+        <button className="btn btn-primary mt-2">Predict Price</button>
       </form>
-      <a>price: {price+cityPrice}</a>
+    </div>
+    
+    <a style={{ fontWeight: 'bold', fontSize: 50}}>Predicted price: {price+cityPrice}</a>
     </div>
   );
 };
