@@ -21,9 +21,7 @@ function App() {
   }, []);
 
   return (
-    <div style={{display: 'flex',
-    alignItems: "center",
-    justifyContent: "center",}} className="App">
+    <div style={{}} className="App">
       <PricePredictor />
     <hr/>
       <ListingsMaps />
