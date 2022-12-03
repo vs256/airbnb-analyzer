@@ -12,10 +12,11 @@
     "leaflet": "^1.9.3",
     "leaflet.markercluster": "^1.5.3",
     "mdb-react-ui-kit": "^5.0.0",
-    "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
-    "react-dom": "^18.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-leaflet": "^4.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "rsuite": "^5.23.1",
     "web-vitals": "^2.1.4"
@@ -32,16 +33,9 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
