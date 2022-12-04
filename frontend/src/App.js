@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PricePredictor from "./Features/PricePredictor";
 import ListingsMaps from "./Features/maps/listingsMaps";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
   const [getMessage, setGetMessage] = useState({});
@@ -21,8 +22,10 @@ function App() {
   }, []);
 
   return (
-    <div style={{}} className="App">
-      <PricePredictor />
+    <div style={{}} className="App BgWaves">
+      <Navbar />
+      <div ><PricePredictor /></div>
+      
     <hr/>
       <ListingsMaps />
     </div>

@@ -2,6 +2,48 @@
   text-align: center;
 }
 
+.BgWaves{
+  position: relative;
+  min-height: 90vh;
+  background-image: url("./assets/landing_waves.png");
+
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color:#ff9480;
+
+}
+
+.featureBox{
+  margin:50px;
+  width: 70%;
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 0 0 4px 0.5px grey;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1.3em 1em;
+  float: center;
+  
+}
+
+.featureBox1{
+  margin:50px;
+  width: 27%;
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 0 0 4px 0.5px grey;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1.3em 1em;
+  float: center;
+  background-color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -92,13 +92,18 @@ const PricePredictor = (props) => {
   };
 
   return (
-    <div
+    <div className="BgWaves">
+      <span style={{ float: "left", marginRight: "200px" , marginLeft: "200px"}}><a style={{ fontWeight: "bold", fontSize: 50 ,color: "white"}}>
+          Predicted price: {price + cityPrice}
+        </a></span>
+    <span
       style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
-      }}
+      }} 
+      className="featureBox1"
     >
       <div
         style={{
@@ -269,11 +274,13 @@ const PricePredictor = (props) => {
           <button className="btn btn-primary mt-2">Predict Price</button>
         </form>
 
-        <a style={{ fontWeight: "bold", fontSize: 50 }}>
-        Predicted price: {price + cityPrice}
-      </a>
+        
       </div>
-
+      
+      
+    </span>
+    
+    
     </div>
   );
 };

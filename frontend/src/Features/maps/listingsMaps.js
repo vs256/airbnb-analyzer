@@ -30,7 +30,8 @@ const MarkersMap = () => {
         <div className="col text-center">
           <h2>AirBnb Listings Map Analyzer</h2>
           <p>Analyze different listings in the surrounding location.</p>
-          <div className="col">
+          <div className="featureBox1">
+          <div className="col ">
             <MapContainer
               style={{ height: "100vh"}}
               center={center}
@@ -58,6 +59,7 @@ const MarkersMap = () => {
                 ))}
               </MarkerClusterGroup>
             </MapContainer>
+          </div>
           </div>
         </div>
       </div>

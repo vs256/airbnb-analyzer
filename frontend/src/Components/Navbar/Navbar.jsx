@@ -22,26 +22,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto justify-content-end w-100">
-              <li className="nav-item mb-2">
-                <Link to="/pricing" className="nav-link pricing">
-                  PRICING
-                  <span className="sr-only">(current)</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/signin" className="nav-link signin_btn">
-                  SIGN IN
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/tester" className="nav-link transfer_btn">
-                  BECOME A TESTER
-                </Link>
-              </li>
-            </ul>
-          </div>
+        
         </div>
       </nav>
     </>
