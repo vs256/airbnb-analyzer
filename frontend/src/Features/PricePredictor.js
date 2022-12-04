@@ -95,198 +95,203 @@ const PricePredictor = (props) => {
 
   return (
     <div className="BgWaves">
-      <span style={{ float: "right", marginTop: '300px', marginRight: '120px' }}>
-        <a style={{ fontWeight: "bold", fontSize: 50, color: "white" }}>
-          <text>
-            Predicted price: ${(price + cityPrice).toFixed(2)}
-            <hr /> Predicted Annual Revenue:{" "}
-           ${(avgBookings[neighbourhood] *
-              (price+cityPrice)).toFixed(2)}
-          </text>
-        </a>
-      </span>
+      <div>
+        <span
+          style={{ float: "right", marginTop: "300px", marginRight: "120px" }}
+        >
+          <a style={{ fontWeight: "bold", fontSize: 50, color: "white" }}>
+            <text>
+              Predicted price: ${(price + cityPrice).toFixed(2)}
+              <hr /> Predicted Annual Revenue: $
+              {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2)}
+            </text>
+          </a>
+        </span>
 
-      <span
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-        }}
-        className="featureBox1"
-      >
-        <div
+        <span
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "50vh",
+            height: "100vh",
           }}
+          className="featureBox1"
         >
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="price-predictor" className="form-label" />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "70vh",
+              marginTop: "50px",
+              marginBottom: "50px",
+            }}
+          >
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="price-predictor" className="form-label" />
 
-            <hr />
-            <label> City </label>
-            <InputPicker
-              value={neighbourhood}
-              onChange={(n) => setNeighbourhood(n)}
-              data={cities}
-              style={{
-                width: 224,
-                display: "flex",
-              }}
-            />
-
-            <hr />
-
-            <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
-              <label> Guests: {guests}</label>
-              <Slider
-                progress
-                defaultValue={1}
-                onChange={(value) => {
-                  setGuests(value);
+            <div>
+              <label> City </label>
+              <InputPicker
+                value={neighbourhood}
+                onChange={(n) => setNeighbourhood(n)}
+                data={cities}
+                style={{
+                  width: 224,
+                  display: "flex",
                 }}
-                min={1}
-                max={64}
-              />
+              /></div>
+
               <hr />
-              <label> Bathrooms: {bathrooms} </label>
-              <Slider
-                progress
-                defaultValue={1}
-                onChange={(value) => {
-                  setBathrooms(value);
-                }}
-                min={1}
-                max={12}
-              />
-              <hr />
-              <label> Accommodates: {accommodates}</label>
-              <Slider
-                progress
-                defaultValue={1}
-                onChange={(value) => {
-                  setAccommodates(value);
-                }}
-                min={1}
-                max={64}
-              />
-              <hr />
-              <label> Bedrooms: {bedrooms}</label>
-              <Slider
-                progress
-                defaultValue={1}
-                onChange={(value) => {
-                  setBedrooms(value);
-                }}
-                min={1}
-                max={12}
-              />
-              <hr />
-              <label> Beds: {beds} </label>
-              <Slider
-                progress
-                defaultValue={1}
-                onChange={(value) => {
-                  setBeds(value);
-                }}
-                min={1}
-                max={24}
-              />
-            </div>
-            <hr />
-            <label> Cancellation policy </label>
-            <RadioGroup name="radioList" inline>
-              <Radio
-                value="flexible"
-                onChange={(value) => {
-                  setCancellationPolicy(value);
-                }}
-              >
-                flexible
-              </Radio>
-              <Radio
-                value="moderate"
-                onChange={(value) => {
-                  setCancellationPolicy(value);
-                }}
-              >
-                moderate
-              </Radio>
-              <Radio
-                value="strict"
-                onChange={(value) => {
-                  setCancellationPolicy(value);
-                }}
-              >
-                strict
-              </Radio>
-            </RadioGroup>
 
-            <hr />
-            <label> Property type </label>
-            <RadioGroup name="radioList" inline>
-              <Radio
-                value="Apartment"
-                onChange={(value) => {
-                  setPropertyType(value);
-                }}
-              >
-                Apartment
-              </Radio>
-              <Radio
-                value="House"
-                onChange={(value) => {
-                  setPropertyType(value);
-                }}
-              >
-                House
-              </Radio>
-              <Radio
-                value="Boat"
-                onChange={(value) => {
-                  setPropertyType(value);
-                }}
-              >
-                Boat
-              </Radio>
-              <Radio
-                value="Loft"
-                onChange={(value) => {
-                  setPropertyType(value);
-                }}
-              >
-                Loft
-              </Radio>
-            </RadioGroup>
+              <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
+                <label> Guests: {guests}</label>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setGuests(value);
+                  }}
+                  min={1}
+                  max={64}
+                />
+                <hr/>
+                <label> Bathrooms: {bathrooms} </label>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setBathrooms(value);
+                  }}
+                  min={1}
+                  max={12}
+                />
+                <hr />
+                <label> Accommodates: {accommodates}</label>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setAccommodates(value);
+                  }}
+                  min={1}
+                  max={64}
+                />
+                <hr />
+                <label> Bedrooms: {bedrooms}</label>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setBedrooms(value);
+                  }}
+                  min={1}
+                  max={12}
+                />
+                <hr />
+                <label> Beds: {beds} </label>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setBeds(value);
+                  }}
+                  min={1}
+                  max={24}
+                />
+              </div>
+              <hr />
+              <label> Cancellation policy </label>
+              <RadioGroup name="radioList" inline>
+                <Radio
+                  value="flexible"
+                  onChange={(value) => {
+                    setCancellationPolicy(value);
+                  }}
+                >
+                  flexible
+                </Radio>
+                <Radio
+                  value="moderate"
+                  onChange={(value) => {
+                    setCancellationPolicy(value);
+                  }}
+                >
+                  moderate
+                </Radio>
+                <Radio
+                  value="strict"
+                  onChange={(value) => {
+                    setCancellationPolicy(value);
+                  }}
+                >
+                  strict
+                </Radio>
+              </RadioGroup>
 
-            <hr />
-            <label> Room type </label>
-            <RadioGroup name="radioList" inline>
-              <Radio
-                value="Private room"
-                onChange={(value) => {
-                  setRoomType(value);
-                }}
-              >
-                Private room
-              </Radio>
-              <Radio
-                value="Entire home/apt"
-                onChange={(value) => {
-                  setRoomType(value);
-                }}
-              >
-                Entire home/apt
-              </Radio>
-            </RadioGroup>
+              <hr />
+              <label> Property type </label>
+              <RadioGroup name="radioList" inline>
+                <Radio
+                  value="Apartment"
+                  onChange={(value) => {
+                    setPropertyType(value);
+                  }}
+                >
+                  Apartment
+                </Radio>
+                <Radio
+                  value="House"
+                  onChange={(value) => {
+                    setPropertyType(value);
+                  }}
+                >
+                  House
+                </Radio>
+                <Radio
+                  value="Boat"
+                  onChange={(value) => {
+                    setPropertyType(value);
+                  }}
+                >
+                  Boat
+                </Radio>
+                <Radio
+                  value="Loft"
+                  onChange={(value) => {
+                    setPropertyType(value);
+                  }}
+                >
+                  Loft
+                </Radio>
+              </RadioGroup>
 
-            <button className="btn btn-primary mt-2">Predict Price</button>
-          </form>
-        </div>
-      </span>
+              <hr />
+              <label> Room type </label>
+              <RadioGroup name="radioList" inline>
+                <Radio
+                  value="Private room"
+                  onChange={(value) => {
+                    setRoomType(value);
+                  }}
+                >
+                  Private room
+                </Radio>
+                <Radio
+                  value="Entire home/apt"
+                  onChange={(value) => {
+                    setRoomType(value);
+                  }}
+                >
+                  Entire home/apt
+                </Radio>
+              </RadioGroup>
+
+              <button className="btn btn-primary mt-2">Predict Price</button>
+            </form>
+          </div>
+        </span>
+      </div>
     </div>
   );
 };
