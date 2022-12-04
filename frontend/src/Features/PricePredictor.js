@@ -33,7 +33,6 @@ const PricePredictor = (props) => {
 
   const [annualRevenue, setAnnualRevenue] = useState(0);
 
-
   const cities = [
     "Menlo Park",
     "Sunnyvale",
@@ -102,7 +101,7 @@ const PricePredictor = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     InsertPredictValues();
-    var annualRev = (avgBookings[neighbourhood] * (price + cityPrice));
+    var annualRev = avgBookings[neighbourhood] * (price + cityPrice);
     setAnnualRevenue(annualRev);
     //setBody("");
   };
@@ -117,8 +116,10 @@ const PricePredictor = (props) => {
             <text>
               Predicted price: ${(price + cityPrice).toFixed(2)}
               <hr /> Predicted Annual Revenue: $
-              {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2) === "NaN" && (0.0).toFixed(2)}
-              {((avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2)) !== "NaN" && (annualRevenue*4).toFixed(2)}
+              {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2) ===
+                "NaN" && (0.0).toFixed(2)}
+              {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2) !==
+                "NaN" && (annualRevenue * 4).toFixed(2)}
             </text>
           </a>
         </span>
