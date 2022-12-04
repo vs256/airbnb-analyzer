@@ -22,11 +22,15 @@ function App() {
   }, []);
 
   return (
-    <div style={{}} className="App BgWaves">
-      <Navbar />
-      <div ><PricePredictor /></div>
-      
-    <hr/>
+    <div>
+      <div style={{}} className="App BgWaves">
+        <Navbar />
+        <div>
+          <PricePredictor />
+        </div>
+
+        <hr />
+      </div>
       <ListingsMaps />
     </div>
   );

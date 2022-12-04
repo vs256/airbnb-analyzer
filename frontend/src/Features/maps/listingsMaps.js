@@ -1,4 +1,3 @@
-
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
@@ -8,7 +7,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "./MarkerClusterGroup";
 import L from "leaflet";
 import avgBookings from "./cities_avgBookings.json";
-
 
 import "leaflet/dist/leaflet.css";
 import osm from "./osm-providers";
@@ -29,11 +27,14 @@ const MarkersMap = () => {
 
   return (
     <>
-      <div className="row">
+      <div
+        style={{ display: "flex", height: "100vh", margin: "75px" }}
+        className="row"
+      >
         <div className="col text-center">
           <h2>AirBnb Listings Map Analyzer</h2>
           <p>Analyze different listings in the surrounding location.</p>
-          <div className="featureBox1">
+          <div className="listingsMap">
             <div className="col ">
               <MapContainer
                 style={{ height: "100vh" }}
@@ -59,13 +60,13 @@ const MarkersMap = () => {
                         <b> Price: {listing.price}</b> <hr />{" "}
                         <b>
                           {" "}
-                          <a href={listing.listing_url}>Airbnb link</a>
-                        </b>
-                        <b>
-                          {" "}
                           Predicted Annual Revenue:{" "}
                           {avgBookings[listing.neighbourhood.split(",")[0]] *
                             listing.price.substring(1)}
+                        </b>
+                        <b>
+                          {" "}
+                          <a href={listing.listing_url}>Airbnb link</a>
                         </b>
                       </Popup>
                     </Marker>
