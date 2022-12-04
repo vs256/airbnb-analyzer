@@ -56,14 +56,35 @@ const MarkersMap = () => {
                     >
                       <Popup>
                         <b>{listing.name} </b> <hr />{" "}
-                        <b> Location: {listing.neighbourhood}</b> <hr />{" "}
-                        <b> Price: {listing.price}</b> <hr />{" "}
+                        <b> Location: </b>{listing.neighbourhood != "" && (listing.neighbourhood)}{listing.neighbourhood == "" && (listing.neighbourhood_cleansed)} <hr />{" "}
+                        <b> Bedrooms: </b>
+                        {listing.bedrooms} <b>|| Beds: </b>
+                        {listing.beds} <b>|| Bathrooms: </b>
+                        {listing.bathrooms_text} <b> || Accommodates: </b>
+                        {listing.accommodates} <b>|| Property type: </b>
+                        {listing.property_type}
+                        <hr />
+                        <b> Price: </b>
+                        {listing.price}{" "}
                         <b>
-                          {" "}
+                          <hr />
                           Predicted Annual Revenue:{" "}
-                          {avgBookings[listing.neighbourhood.split(",")[0]] *
-                            listing.price.substring(1)}
                         </b>
+                        $
+                        {(
+                          avgBookings[listing.neighbourhood.split(",")[0]] *
+                          listing.price.substring(1)
+                        ).toFixed(2) === "NaN" &&
+                          (0.00).toFixed(2)}
+                        {(
+                          avgBookings[listing.neighbourhood.split(",")[0]] *
+                          listing.price.substring(1)
+                        ).toFixed(2) != "NaN" &&
+                          (
+                            avgBookings[listing.neighbourhood.split(",")[0]] *
+                            listing.price.substring(1)
+                          ).toFixed(2)}
+                        <hr />{" "}
                         <b>
                           {" "}
                           <a href={listing.listing_url}>Airbnb link</a>

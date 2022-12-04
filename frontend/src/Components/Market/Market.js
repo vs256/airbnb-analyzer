@@ -72,32 +72,12 @@ export default function Market() {
         },
       ],
     },
-    {
-      title: "Automotive",
-      image: f,
-      body: [
-        {
-          heading: "Heading5",
-          desc:
-            " Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate necessitatibus sapiente?",
-        },
-      ],
-    },
-    {
-      title: "Media and Entertainment",
-      image: e,
-      body: [
-        {
-          heading: "Heading5",
-          desc:
-            " Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate necessitatibus sapiente?",
-        },
-      ],
-    },
+    
   ];
 
   return (
     <section id="market">
+      <hr/>
       <div className="container-fluid">
         <div className="content">
           <h1 className="title font-weight-bold">
@@ -119,7 +99,7 @@ export default function Market() {
             </div>
           </div>
         </div>
-        <div className="container">
+        {/* <div className="container">
           <div className="row my-3 ">
             <ul className="list">
               {boxes[indexx].body.length &&
@@ -132,7 +112,7 @@ export default function Market() {
                 })}
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

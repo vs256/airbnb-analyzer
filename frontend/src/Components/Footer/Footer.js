@@ -11,21 +11,13 @@ export default function Footer() {
             Home
           </Link>
           <Link to="/" className="footer_link">
-            About UserQual
+            About our Prediction
           </Link>
           <Link to="/" className="footer_link">
             FAQ
           </Link>
           <Link to="/" className="footer_link">
-            Privacy and Terms and Conditions
-          </Link>
-          <Link to="/" className="footer_link">
-            Blog
-          </Link>
-        </div>
-        <div className="section_2">
-          <Link to="/" className="footer_link_2">
-            Happy Testing
+            Terms and Conditions
           </Link>
         </div>
       </div>

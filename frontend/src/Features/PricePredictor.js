@@ -1,8 +1,7 @@
 import { useState } from "react";
 import APIService from "../Components/APIService";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Slider, Radio, RadioGroup, InputPicker } from "rsuite";
+import { Slider, Radio, RadioGroup, InputPicker, Popover, Whisper, Button} from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
 import avgBookings from "./maps/cities_avgBookings.json";
@@ -23,6 +22,8 @@ const PricePredictor = (props) => {
 
   const [cityPrice, setCityPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const [annualRevenue, setAnnualRevenue] = useState((avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2));
 
   const cities = [
     "Menlo Park",
@@ -54,6 +55,7 @@ const PricePredictor = (props) => {
         console.log(response);
         setPrice(response);
         setCityTax();
+        setAnnualRevenue((avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2));
       })
       .catch((error) => console.log("error", error));
   };
@@ -93,45 +95,37 @@ const PricePredictor = (props) => {
     //setBody("");
   };
 
+
   return (
     <div className="BgWaves">
-      <div>
+      <div style={{display: 'flex'}}>
         <span
-          style={{ float: "right", marginTop: "300px", marginRight: "120px" }}
+          style={{ float: "right", marginTop: "300px", marginLeft: "120px" }}
         >
           <a style={{ fontWeight: "bold", fontSize: 50, color: "white" }}>
             <text>
               Predicted price: ${(price + cityPrice).toFixed(2)}
               <hr /> Predicted Annual Revenue: $
-              {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2)}
+              {((annualRevenue)) === "NaN" && (0.00).toFixed(2)}
+              {(annualRevenue != "NaN") && (annualRevenue)}
             </text>
           </a>
         </span>
 
         <span
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100vh",
           }}
           className="featureBox1"
         >
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "70vh",
-              marginTop: "50px",
-              marginBottom: "50px",
             }}
           >
             <form onSubmit={handleSubmit}>
               <label htmlFor="price-predictor" className="form-label" />
 
-            <div>
-              <label> City </label>
+            <div style={{display:'flex', flexDirection: 'row'}}>
+              
               <InputPicker
                 value={neighbourhood}
                 onChange={(n) => setNeighbourhood(n)}
@@ -140,12 +134,18 @@ const PricePredictor = (props) => {
                   width: 224,
                   display: "flex",
                 }}
-              /></div>
+              />
+              <Whisper followCursor speaker={<Popover>The city your property is in.</Popover>}>
+                <Button> City</Button> 
+                </Whisper>
+                </div>
 
               <hr />
 
               <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
-                <label> Guests: {guests}</label>
+              <Whisper followCursor speaker={<Popover>Maximum amount of people allowed as guests in the property.</Popover>}>
+                <Button> Guests: {guests}</Button> 
+                </Whisper>
                 <Slider
                   progress
                   defaultValue={1}
@@ -156,29 +156,9 @@ const PricePredictor = (props) => {
                   max={64}
                 />
                 <hr/>
-                <label> Bathrooms: {bathrooms} </label>
-                <Slider
-                  progress
-                  defaultValue={1}
-                  onChange={(value) => {
-                    setBathrooms(value);
-                  }}
-                  min={1}
-                  max={12}
-                />
-                <hr />
-                <label> Accommodates: {accommodates}</label>
-                <Slider
-                  progress
-                  defaultValue={1}
-                  onChange={(value) => {
-                    setAccommodates(value);
-                  }}
-                  min={1}
-                  max={64}
-                />
-                <hr />
-                <label> Bedrooms: {bedrooms}</label>
+                <Whisper followCursor speaker={<Popover>The amount of bedrooms in the home</Popover>}>
+                <Button> Bedrooms: {bedrooms}</Button>
+ </Whisper>
                 <Slider
                   progress
                   defaultValue={1}
@@ -189,7 +169,9 @@ const PricePredictor = (props) => {
                   max={12}
                 />
                 <hr />
-                <label> Beds: {beds} </label>
+                <Whisper followCursor speaker={<Popover>The amount of beds your property has.</Popover>}>
+                <Button> Beds: {beds}</Button> 
+                </Whisper>
                 <Slider
                   progress
                   defaultValue={1}
@@ -199,9 +181,40 @@ const PricePredictor = (props) => {
                   min={1}
                   max={24}
                 />
+                <hr/>
+               
+                <Whisper followCursor speaker={<Popover>The amount of bathrooms your property has.</Popover>}>
+                <Button> Bathrooms: {bathrooms}</Button> 
+                </Whisper>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setBathrooms(value);
+                  }}
+                  min={1}
+                  max={12}
+                />
+                <hr />
+                
+                
+                <Whisper followCursor speaker={<Popover>How many people can sleep inside your property?.</Popover>}>
+                <Button> Accommodates: {accommodates} </Button> 
+                </Whisper>
+                <Slider
+                  progress
+                  defaultValue={1}
+                  onChange={(value) => {
+                    setAccommodates(value);
+                  }}
+                  min={1}
+                  max={64}
+                />
               </div>
               <hr />
-              <label> Cancellation policy </label>
+              <Whisper followCursor speaker={<Popover>How strict will you be with the cancellation policy?</Popover>}>
+                <Button> Cancellation Policy</Button> 
+                </Whisper>
               <RadioGroup name="radioList" inline>
                 <Radio
                   value="flexible"
@@ -230,7 +243,9 @@ const PricePredictor = (props) => {
               </RadioGroup>
 
               <hr />
-              <label> Property type </label>
+              <Whisper followCursor speaker={<Popover>What type of property is it?</Popover>}>
+                <Button> Property type </Button> 
+                </Whisper>
               <RadioGroup name="radioList" inline>
                 <Radio
                   value="Apartment"
@@ -267,7 +282,9 @@ const PricePredictor = (props) => {
               </RadioGroup>
 
               <hr />
-              <label> Room type </label>
+              <Whisper followCursor speaker={<Popover>What type of room is it?</Popover>}>
+                <Button> Room type </Button> 
+                </Whisper>
               <RadioGroup name="radioList" inline>
                 <Radio
                   value="Private room"

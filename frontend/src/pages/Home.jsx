@@ -14,9 +14,9 @@ const Home = () => {
       {/* <Laptop /> */}
       <Features />
       <Market />
-      <Brands />
-      <Trial />
-      {/* <Footer /> */}
+      {/*<Brands />
+      <Trial />*/}
+      <Footer />
     </div>
   );
 };
