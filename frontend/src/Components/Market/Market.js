@@ -62,7 +62,7 @@ export default function Market() {
       ],
     },
     {
-      title: "Healthcare and Insurance",
+      title: "SciKit-Learn",
       image: b,
       body: [
         {
