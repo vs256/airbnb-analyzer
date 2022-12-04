@@ -98,10 +98,10 @@ const PricePredictor = (props) => {
       <span style={{ float: "right", marginTop: '300px', marginRight: '120px' }}>
         <a style={{ fontWeight: "bold", fontSize: 50, color: "white" }}>
           <text>
-            Predicted price: {price + cityPrice}
+            Predicted price: ${(price + cityPrice).toFixed(2)}
             <hr /> Predicted Annual Revenue:{" "}
-            {avgBookings[neighbourhood] *
-              (price+cityPrice)}
+           ${(avgBookings[neighbourhood] *
+              (price+cityPrice)).toFixed(2)}
           </text>
         </a>
       </span>

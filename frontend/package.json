@@ -12,13 +12,15 @@
     "leaflet": "^1.9.3",
     "leaflet.markercluster": "^1.5.3",
     "mdb-react-ui-kit": "^5.0.0",
-    "react-bootstrap": "^2.6.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^2.6.0",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.7.1",
     "react-leaflet": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "rsuite": "^5.23.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
