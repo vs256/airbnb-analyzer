@@ -1,3 +1,4 @@
+
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
@@ -52,7 +53,7 @@ const MarkersMap = () => {
                     <Popup>
                       <b>
                         {listing.name} </b> <hr/> <b> Location: {listing.neighbourhood}
-                      </b>
+                      </b> <hr/> <b> Price: {listing.price}</b> <hr/> <b> <a href={listing.listing_url}>Airbnb link</a></b>
                     </Popup>
                   </Marker>
                 ))}
