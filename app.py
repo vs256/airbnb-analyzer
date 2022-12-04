@@ -22,11 +22,11 @@ manager = Manager(app)
 
 def generateModelForAirBNB():
     print("Generating AirBnB Model")
-    price_raw = readCSV('dataset/old_airbnb_class.csv') #classes
+    price_raw = readCSV('dataset/final_dataset.csv') #classes
     print("Read class values")
     prices = removeDollar(price_raw, 'price')
     print("Read features")
-    data_features = readCSV('dataset/old_preprocessed.csv')
+    data_features = readCSV('dataset/final_price_dataset.csv')
     vec, data_features_csr = createMatrix(data_features)
     print("Matrix created!!!")
     reg = lassoRegression(data_features_csr, prices)
@@ -62,8 +62,8 @@ def index():
         'extra_people': '$20.00',
         'guests_included': 1,
         'host_identity_verified': 't',
-        'host_neighbourhood': 'City Island',
-        'neighbourhood': 'City Island',
+        'host_neighbourhood': 'San Jose',
+        'neighbourhood': 'San Jose',
         'number_of_reviews': 25,
         'property_type': 'House',
         'review_scores_accuracy': 10.0,
@@ -76,7 +76,7 @@ def index():
         'room_type': 'Private room',
         'security_deposit': '$100.00',
         'square_feet': 718.1781305110001,
-        'zipcode': '10464'
+        'zipcode': '95008'
     }
     if request.method == 'POST':
         print('In post else')

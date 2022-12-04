@@ -64,38 +64,9 @@ const PricePredictor = (props) => {
         setPrice(response);
       })
       .then(() => {
-        setCityTax();
         setAnnualRevenue(avgBookings[neighbourhood] * (price + cityPrice));
       })
       .catch((error) => console.log("error", error));
-  };
-
-  const setCityTax = () => {
-    if (neighbourhood === "Menlo Park") {
-      setCityPrice(23);
-    } else if (neighbourhood === "Sunnyvale") {
-      setCityPrice(31);
-    } else if (neighbourhood === "Saratoga") {
-      setCityPrice(51);
-    } else if (neighbourhood === "Palo Alto") {
-      setCityPrice(56);
-    } else if (neighbourhood === "San Francisco") {
-      setCityPrice(76);
-    } else if (neighbourhood === "Los Gatos") {
-      setCityPrice(52);
-    } else if (neighbourhood === "Mountain View") {
-      setCityPrice(58);
-    } else if (neighbourhood === "Los Altos") {
-      setCityPrice(153);
-    } else if (neighbourhood === "Saratoga") {
-      setCityPrice(48);
-    } else if (neighbourhood === "Cupertino") {
-      setCityPrice(43);
-    } else if (neighbourhood === "Gilroy") {
-      setCityPrice(41);
-    } else {
-      setCityPrice(0);
-    }
   };
 
   const handleSubmit = (event) => {
@@ -119,7 +90,7 @@ const PricePredictor = (props) => {
               {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2) ===
                 "NaN" && (0.0).toFixed(2)}
               {(avgBookings[neighbourhood] * (price + cityPrice)).toFixed(2) !==
-                "NaN" && (annualRevenue * 4).toFixed(2)}
+                "NaN" && (annualRevenue).toFixed(2)}
             </text>
           </a>
         </span>
