@@ -1,5 +1,8 @@
 import { useState } from "react";
 import APIService from "../Components/APIService";
+
+import axios from "axios";
+
 import Form from "react-bootstrap/Form";
 import {
   Slider,
@@ -47,8 +50,10 @@ const PricePredictor = (props) => {
     "Gilroy",
   ].map((item) => ({ label: item, value: item }));
 
+
   const InsertPredictValues = () => {
-    APIService.InsertPredictValues({
+    // POST request using axios inside useEffect React hook
+    const article = {
       neighbourhood,
       guests,
       bathrooms,
@@ -58,17 +63,42 @@ const PricePredictor = (props) => {
       cancellation_policy,
       property_type,
       room_type,
-    })
-      .then((response) => {
-        console.log(response);
-        setPrice(response["price"]);
-      })
-      .then(() => {
-        setCityTax();
-        setAnnualRevenue(avgBookings[neighbourhood] * (price + cityPrice));
-      })
-      .catch((error) => console.log("error", error));
-  };
+    };
+    axios.post('http://ec2-44-212-42-42.compute-1.amazonaws.com:5000/', article)
+        .then(response => {console.log(response.data);
+          var jsonData = response.data;
+          console.log(jsonData["price"]); 
+          setPrice(parseFloat(jsonData["price"])); })
+        .then(() => {
+          setCityTax();
+          setAnnualRevenue(avgBookings[neighbourhood] * (price + cityPrice));
+        })
+        .catch((error) => console.log("error", error));
+
+};
+
+  // const InsertPredictValues = () => {
+  //   APIService.InsertPredictValues({
+  //     neighbourhood,
+  //     guests,
+  //     bathrooms,
+  //     accommodates,
+  //     bedrooms,
+  //     beds,
+  //     cancellation_policy,
+  //     property_type,
+  //     room_type,
+  //   })
+  //     .then((response) => {
+  //       console.log(response);
+  //       setPrice(response["price"]);
+  //     })
+  //     .then(() => {
+  //       setCityTax();
+  //       setAnnualRevenue(avgBookings[neighbourhood] * (price + cityPrice));
+  //     })
+  //     .catch((error) => console.log("error", error));
+  // };
 
   const setCityTax = () => {
     if (neighbourhood === "Menlo Park") {

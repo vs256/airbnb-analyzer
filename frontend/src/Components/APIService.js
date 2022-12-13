@@ -1,4 +1,7 @@
+
 export default class APIService {
+
+  
   // Predict Values based on Specifications
   static InsertPredictValues(body) {
     return fetch(`http://ec2-44-212-42-42.compute-1.amazonaws.com:5000/`, {
