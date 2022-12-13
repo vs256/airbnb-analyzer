@@ -121,10 +121,14 @@ def index():
         price = str(predict[0])
         response = jsonify({'price': price})
         response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'OPTIONS,POST,GET')
         return response
     elif request.method == 'GET':
         response = jsonify({'price': "-1"})
         response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'OPTIONS,POST,GET')
         return response
 
 
