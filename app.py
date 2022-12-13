@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_script import Manager
 from forms import predictForm
 import pandas as pd
@@ -119,11 +119,11 @@ def index():
         predict = reg.predict(predictArray.toarray())
         print ("Predicted value is:-->", predict)
         price = str(predict[0])
-        response = Flask.jsonify({'price': price})
+        response = jsonify({'price': price})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
     elif request.method == 'GET':
-        response = Flask.jsonify({'price': "-1"})
+        response = jsonify({'price': "-1"})
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
