@@ -119,10 +119,13 @@ def index():
         predict = reg.predict(predictArray.toarray())
         print ("Predicted value is:-->", predict)
         price = str(predict[0])
-        return price
+        response = Flask.jsonify({'price': price})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
     elif request.method == 'GET':
-        print( "In index1 get")
-        return "-1"
+        response = Flask.jsonify({'price': "-1"})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 
 def readCSV(path):

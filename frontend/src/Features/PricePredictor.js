@@ -61,7 +61,7 @@ const PricePredictor = (props) => {
     })
       .then((response) => {
         console.log(response);
-        setPrice(response);
+        setPrice(response["price"]);
       })
       .then(() => {
         setCityTax();
