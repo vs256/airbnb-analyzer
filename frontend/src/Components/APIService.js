@@ -1,7 +1,7 @@
 export default class APIService {
   // Predict Values based on Specifications
   static InsertPredictValues(body) {
-    return fetch(`http://localhost:5000/`, {
+    return fetch(`http://0.0.0.0:5000/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
